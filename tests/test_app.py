@@ -1,3 +1,9 @@
+'''
+CS321
+Project 3
+Yixuan Qiu & Luhang Sun
+'''
+
 from app import *
 import requests
 
