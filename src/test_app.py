@@ -46,16 +46,16 @@ def test_remove():
 	response = client.get(url, data=data)
 
 	# get redirected
-	asset response.status_code == 302 # redirect
+	assert response.status_code == 302 # redirect
 
 	# making sure the home page does not include the removed test data
 	response = client.get("/")
 	webpage_text = response.get_data()
 	assert b'to do' not in response.data
 
-	# url = website_path + '/add'
-	# myobj = {'visitor': 'New person'}
+# url = website_path + '/add'
+# myobj = {'visitor': 'New person'}
 
-	# webpage = requests.post(url, data = myobj)
+# webpage = requests.post(url, data = myobj)
 
-	# assert "New person" in webpage.text
+# assert "New person" in webpage.text
