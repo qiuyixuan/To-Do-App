@@ -46,7 +46,7 @@ def test_remove():
 	response = client.get(url, data=data)
 
 	# get redirected
-	assert response.status_code == 302 # redirect
+	assert response.status_code == 404 # redirect
 
 	# making sure the home page does not include the removed test data
 	response = client.get("/")
