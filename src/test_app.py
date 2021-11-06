@@ -39,6 +39,19 @@ def test_add():
 	assert b'to do' in response.data
 
 
+def test_remove():
+	client = app.test_client()
+	url = "/remove"
+	data = {'item': 'to do'}
+	response = client.get(url, data=data)
+
+	# get redirected
+	asset response.status_code == 302 # redirect
+
+	# making sure the home page does not include the removed test data
+	response = client.get("/")
+	webpage_text = response.get_data()
+	assert b'to do' not in response.data
 
 	# url = website_path + '/add'
 	# myobj = {'visitor': 'New person'}
