@@ -2,25 +2,25 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{ title }} - Microblog</title>
+        <title>{{ title }} - To-Do App</title>
     </head>
     <body>
-        <h1>Hello, {{ user.username }}!</h1>
+        <h1>Hello!</h1>
 
         <br>
 
         <form action="/add" method="post">
         	<div>
-        		<label for="title">Visitor Log</label>
-        		<input type="text" name="visitor" placeholder="Enter Name">
+        		<label for="title">To-Do Item</label>
+        		<input type="text" name="item" placeholder="To Do Item Text">
         		<button type="submit">Add</button>
 
         	</div>
         </form>
 
-        {% for visitor in visitors %}
-        	<p> {{visitor}} </p>
-        	<a href="/remove/{{visitor}}">remove</a>
+        {% for item in to_do_list %}
+        	<p> {{item}} </p>
+        	<a href="/remove/{{item}}">remove</a>
         {% endfor %}
 
 
