@@ -2,12 +2,17 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{ title }} - To-Do App</title>
+        <title>{{ title }} - Todo App</title>
     </head>
-    <body>
-        <h1>Hello!</h1>
 
-        <br>
+    <body>
+        <h1>To-Do App</h1>
+
+        <hr>
+
+        <p>Current Date and Time is {{date_time}}</p>
+
+        <hr>
 
         <form action="/add" method="post">
         	<div>
@@ -23,6 +28,14 @@
         	<a href="/remove/{{item}}">remove</a>
         {% endfor %}
 
+        <hr>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"><small>©Yixuan Qiu and Luhang Sun</small></p>
+            </div>
+        </footer>
 
     </body>
+
 </html>
