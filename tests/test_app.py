@@ -4,7 +4,7 @@ Project 3
 Yixuan Qiu & Luhang Sun
 '''
 
-from src.app import *
+from ..src.app import *
 import requests
 
 
