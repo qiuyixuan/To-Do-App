@@ -8,35 +8,35 @@ from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 
-visitors = []
+to_do_list = []
 
 
 @app.route("/")
 def index():
-	user = {'username' : 'Naser' }
+	# user = {'username' : 'Naser' }
 	return render_template("base.html", 
 							title="home", 
-							user=user, 
-							visitors=visitors)
+							# user=user, 
+							to_do_list=to_do_list)
 
 
 @app.route("/about")
 def about():
-	return "About us: Naser and the cool kids from CS321"
+	return "A to-do app"
 
 
 @app.route("/add", methods=["POST"])
 def add():
-	visitor = request.form.get("visitor")
-	visitors.append(visitor)
-	print(visitors[-1])
+	item = request.form.get("item")
+	to_do_list.append(item)
+	print(to_do_list[-1])
 
 	return redirect(url_for("index"))
 
 
 @app.route("/remove/<string:name>")
 def remove(name):
-	visitors.remove(name)
+	to_do_list.remove(name)
 	return redirect(url_for("index"))
 
 
