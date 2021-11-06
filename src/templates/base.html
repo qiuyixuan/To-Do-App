@@ -23,10 +23,11 @@
         	</div>
         </form>
 
+        <ol>
         {% for item in to_do_list %}
-        	<p> {{item}} </p>
-        	<a href="/remove/{{item}}">remove</a>
+            <li> {{item}} &nbsp; <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item}}">remove</a> </li>
         {% endfor %}
+        </ol>
 
         <hr>
 
