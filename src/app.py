@@ -38,5 +38,7 @@ def remove(name):
 	to_do_list.remove(name)
 	return redirect(url_for("index"))
 
+
+
 if __name__ == "__main__":
 	app.run(debug=True) 

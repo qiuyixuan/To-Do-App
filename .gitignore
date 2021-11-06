@@ -1,2 +1,5 @@
-
+.gitignore
+myvenv/
+__pycache__/
+Procfile
 *.pyc
