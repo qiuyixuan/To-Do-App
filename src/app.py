@@ -7,10 +7,12 @@ Yixuan Qiu & Luhang Sun
 from flask import Flask, render_template, request, url_for, redirect
 # from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from collections import Counter
 
 app = Flask(__name__)
 
 to_do_list = [] 
+content_list = []
 
 @app.route("/")
 def index():
@@ -19,7 +21,8 @@ def index():
 	return render_template("base.html", 
 							title="Home", 
 							date_time=date_time,
-							to_do_list=to_do_list)
+							to_do_list=to_do_list,
+							content_list=content_list)
 
 @app.route("/about")
 def about():
@@ -40,17 +43,18 @@ def add():
 	item["priority"] = priority
 	item["tags"] = formatTags(tags_input)
 	item["time"] = time
+	item["id"] = content + str(content_list.count(content) + 1)
 
+	content_list.append(content)
 	to_do_list.append(item) 
-	# print(to_do_list[-1])
 
 	return redirect(url_for("index"))
 
-@app.route("/remove/<string:name>")
-def remove(name):
-	for i in to_do_list:
-		if i["content"] == name:
-			to_do_list.remove(i)
+@app.route("/remove/<string:item_id>")
+def remove(item_id):
+	for item in to_do_list:
+		if item["id"] == item_id:
+			to_do_list.remove(item)
 			break
 	return redirect(url_for("index"))
 
