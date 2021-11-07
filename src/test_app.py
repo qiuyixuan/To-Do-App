@@ -23,21 +23,21 @@ def test_about():
     assert response.status_code == 200  # success
 
 
-def test_add():
+# def test_add():
 
-    # creating a post request with data as if coming from form
-    client = app.test_client()
-    url = "/add"
-    data = {"item": "to do"}
-    response = client.post(url, data=data)
+#     # creating a post request with data as if coming from form
+#     client = app.test_client()
+#     url = "/add"
+#     data = {"item": "to do"}
+#     response = client.post(url, data=data)
 
-    # making sure we got redirected, and the request didn't fail
-    assert response.status_code == 302  # redirect
+#     # making sure we got redirected, and the request didn't fail
+#     assert response.status_code == 302  # redirect
 
-    # making sure the home page now includes the added test data
-    response = client.get("/")
-    webpage_text = response.get_data()
-    assert b"to do" in response.data
+#     # making sure the home page now includes the added test data
+#     response = client.get("/")
+#     webpage_text = response.get_data()
+#     assert b"to do" in response.data
 
 
 def test_remove():
