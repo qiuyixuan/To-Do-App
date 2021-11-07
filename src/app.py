@@ -7,7 +7,6 @@ Yixuan Qiu & Luhang Sun
 from flask import Flask, render_template, request, url_for, redirect
 # from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from item import *
 
 app = Flask(__name__)
 
@@ -50,9 +49,6 @@ def add():
 
 @app.route("/remove/<string:name>")
 def remove(name):
-	# to_do_list.remove(name)
-	# newlist = [i for i in to_do_list if not (i["content"] == name)]
-	# to_do_list = newlist
 	for i in to_do_list:
 		if i["content"] == name:
 			to_do_list.remove(i)
