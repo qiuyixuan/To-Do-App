@@ -22,8 +22,9 @@
                 <!-- priority labels - optional and default to Medium -->
                 <label for = "prioirty">&nbsp;&nbsp;Priority:</label>
                 <select name = "priority" id="priority">
-                    <option value="Medium">Medium</option>
+                    <option value=""></option>
                     <option value="High">High</option>
+                    <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
 
@@ -37,7 +38,15 @@
 
         <ol>
         {% for item in to_do_list %}
-            <li> {{item["content"]}} &nbsp; [{{item["priority"]}}] &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["content"]}}">remove</a> </li>
+            {% if item["priority"] == "High" %}
+                <li> {{item["content"]}} &nbsp; <code style = "background-color: red">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["content"]}}">remove</a> </li>
+            {% elif item["priority"] == "Medium" %}
+                <li> {{item["content"]}} &nbsp; <code style = "background-color: orange">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["content"]}}">remove</a> </li>
+            {% elif item["priority"] == "Low" %}
+                <li> {{item["content"]}} &nbsp; <code style ="background-color: yellow">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["content"]}}">remove</a> </li>
+            {% else %}
+                <li> {{item["content"]}} &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["content"]}}">remove</a> </li>
+            {% endif %}
         {% endfor %}
         </ol>
 

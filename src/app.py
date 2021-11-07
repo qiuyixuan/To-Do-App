@@ -31,7 +31,6 @@ def add():
 	priority = request.form.get("priority")
 	tags_input = request.form.get("tags")	
 
-	#time
 	now = datetime.now()
 	time = now.strftime("%m/%d/%Y, %H:%M")
 
