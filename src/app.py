@@ -55,7 +55,6 @@ def remove(name):
 			break
 	return redirect(url_for("index"))
 
-
 # join tag list to a string for display
 def formatTags(tags_input):
 	if tags_input == "":
