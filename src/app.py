@@ -43,7 +43,7 @@ def add():
 	item["priority"] = priority
 	item["tags"] = formatTags(tags_input)
 	item["time"] = time
-	item["id"] = content + str(content_list.count(content) + 1)
+	item["id"] = content + str(content_list.count(content))
 
 	content_list.append(content)
 	to_do_list.append(item) 
