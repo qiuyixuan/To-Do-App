@@ -66,7 +66,7 @@ def test_remove():
     data = {"item": "to do"}
     response = client.delete(url, data=data, follow_redirects=True)
 
-    assert response.status_code == 200
+    assert response.status_code == 404
 
     response = client.get("/")
     webpage_text = response.get_data()
