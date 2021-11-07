@@ -51,3 +51,16 @@ def test_remove():
     response = client.get("/")
     webpage_text = response.get_data()
     assert b"to_do" not in response.data
+
+def test_format_tags():
+    client = app.test_client()
+    url = "/add"
+    data = {"item": "to_do", "tags": "homework"}
+    response = client.post(url, data=data)
+
+    assert response.status_code == 302
+
+    response = client.get("/")
+    webpage_text = response.get_data()
+    assert b"homework" in response.data
+    assert b"project" not in response.data
