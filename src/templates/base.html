@@ -10,17 +10,17 @@
 
         <hr>
 
-        <p>Current Date and Time is {{date_time}}</p>
+        <p>📅 Current Date and Time is {{date_time}}</p>
 
         <hr>
 
         <form action="/add" method="post">
         	<div>
-        		<label for="title">To-Do Item</label>
+        		<label for="title">📝 To-Do Item</label>
         		<input type="text" name="item" placeholder="To Do Item" required=True>
                 
                 <!-- priority labels - optional and default to Medium -->
-                <label for = "prioirty">&nbsp;&nbsp;Priority:</label>
+                <label for = "prioirty">&nbsp;&nbsp;⏳ Priority:</label>
                 <select name = "priority" id="priority">
                     <option value=""></option>
                     <option value="High">High</option>
@@ -28,7 +28,7 @@
                     <option value="Low">Low</option>
                 </select>
 
-                <label for = "tags">&nbsp;&nbsp;Tags:</label>
+                <label for = "tags">&nbsp;&nbsp;🏷️ Tags:</label>
                 <input type = "text" name = "tags" placeholder = "family, research...">
 
         		<button type="submit">Add</button>
@@ -54,7 +54,7 @@
 
         <footer class="footer">
             <div class="container">
-                <p class="text-muted"><small>©Yixuan Qiu and Luhang Sun</small></p>
+                <p class="text-muted"><small>© Build by Yixuan Qiu and Luhang Sun with ❤️</small></p>
             </div>
         </footer>
 
