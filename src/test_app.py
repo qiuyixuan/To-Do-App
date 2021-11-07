@@ -70,4 +70,4 @@ def test_remove():
 
     response = client.get("/")
     webpage_text = response.get_data()
-    assert b"to do" not in response.data
+    assert b"to do"["id"] not in response.data
