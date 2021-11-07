@@ -18,8 +18,11 @@
         	<div style="text-align:center">
         		<label for="title">📝 To-Do Item</label>
         		<input type="text" name="item" placeholder="To Do Item" required=True>
+
+                <label for="due_date">Due Date:</label>
+                <input type="date" id="due_date" name="due_date" required=True>
                 
-                <!-- priority labels - optional and default to Medium -->
+                <!-- priority labels - optional and default to None -->
                 <label for = "prioirty">&nbsp;&nbsp;⏳ Priority:</label>
                 <select name = "priority" id="priority">
                     <option value=""></option>
@@ -39,13 +42,13 @@
         <ol>
         {% for item in to_do_list %}
             {% if item["priority"] == "High" %}
-                <li> {{item["content"]}} &nbsp; <code style = "background-color: red">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; <code style = "background-color: red">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} &nbsp; <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% elif item["priority"] == "Medium" %}
-                <li> {{item["content"]}} &nbsp; <code style = "background-color: orange">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; <code style = "background-color: orange">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% elif item["priority"] == "Low" %}
-                <li> {{item["content"]}} &nbsp; <code style ="background-color: yellow">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; <code style ="background-color: yellow">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% else %}
-                <li> {{item["content"]}} &nbsp; {{item["tags"]}} &nbsp;{{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% endif %}
         {% endfor %}
         </ol>

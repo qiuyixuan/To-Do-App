@@ -38,6 +38,7 @@ def add():
     content = request.form.get("item")
     priority = request.form.get("priority")
     tags_input = request.form.get("tags")
+    due_date = request.form.get("due_date")
 
     now = datetime.now()
     time = now.strftime("%m/%d/%Y, %H:%M")
@@ -48,6 +49,7 @@ def add():
     item["priority"] = priority
     item["tags"] = format_tags(tags_input)
     item["time"] = time
+    item["due_date"] = due_date
     item["id"] = content + str(content_list.count(content))
 
     content_list.append(content)
@@ -56,7 +58,7 @@ def add():
     return redirect(url_for("index"))
 
 
-@app.route("/remove/<string:item_id>", methods=["DELETE"])
+@app.route("/remove/<string:item_id>")
 def remove(item_id):
     for item in to_do_list:
         if item["id"] == item_id:
@@ -67,11 +69,11 @@ def remove(item_id):
 
 # join tag list to a string for display
 def format_tags(tags_input):
-    if tags_input is None:
+    if tags_input is None or tags_input == "":
         tags = ""
     else:
-        tag_list = tags_input.split(", ")
-        tags = "#" + " #".join(tag_list)
+        tag_list = tags_input.split(" ,")
+        tags = "# " + " #".join(tag_list)
     return tags
 
 
