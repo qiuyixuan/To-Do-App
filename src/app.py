@@ -56,7 +56,7 @@ def add():
     return redirect(url_for("index"))
 
 
-@app.route("/remove/<string:item_id>")
+@app.route("/remove/<string:item_id>", methods=["DELETE"])
 def remove(item_id):
     for item in to_do_list:
         if item["id"] == item_id:
