@@ -42,14 +42,13 @@ def test_add():
 
 def test_remove():
     client = app.test_client()
-    url = "/remove"
+    # url = "/remove" + "to do"
+    url = "/add"
     data = {"item": "to do"}
     response = client.get(url, data=data)
 
     # get redirected
-    assert (
-        response.status_code == 404
-    )  # redirect because the page does not exist anymore after the removal
+    assert response.status_code == 404  # redirect because the page does not exist anymore after the removal
 
     # making sure the home page does not include the removed test data
     response = client.get("/")
