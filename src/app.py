@@ -46,7 +46,7 @@ def add():
     item = {}
     item["content"] = content
     item["priority"] = priority
-    item["tags"] = formatTags(tags_input)
+    item["tags"] = format_tags(tags_input)
     item["time"] = time
     item["id"] = content + str(content_list.count(content))
 
@@ -66,8 +66,8 @@ def remove(item_id):
 
 
 # join tag list to a string for display
-def formatTags(tags_input):
-    if tags_input == "":
+def format_tags(tags_input):
+    if tags_input is None:
         tags = ""
     else:
         tag_list = tags_input.split(", ")
