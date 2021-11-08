@@ -6,11 +6,11 @@
     </head>
 
     <body>
-        <h1 style="text-align:center">To-Do App</h1>
+        <h1 style="text-align:center">A Minimalist To-Do App</h1>
 
         <br>
 
-        <p style="text-align:center">📅 Current Date and Time is <b>{{date_time}}</b></p>
+        <p style="text-align:center">📅 Current Date and Time is <b>{{today}}, {{curr_time}}</b></p>
 
         <hr>
 
@@ -39,16 +39,61 @@
         	</div>
         </form>
 
-        <ol>
+        <br>
+
+        <!-- <div id="btnContainer" style="text-align:center">
+            <button class="btn active" onclick="filter_date('all')"> All</button>
+            <button class="btn" onclick="filter_date('today')"> Today</button>
+            <button class="btn" onclick="filter_date('tomorrow')"> Tomorrow</button>
+            <button class="btn" onclick="filter_date('later')"> Later</button>
+        </div> -->
+
+        <!-- <ol>
         {% for item in to_do_list %}
             {% if item["priority"] == "High" %}
-                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; <code style = "background-color: red">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} &nbsp; <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: red">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% elif item["priority"] == "Medium" %}
-                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; <code style = "background-color: orange">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: orange">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% elif item["priority"] == "Low" %}
-                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; <code style ="background-color: yellow">{{item["priority"]}}</code> &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: yellow">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
             {% else %}
-                <li> {{item["content"]}} &nbsp; Due Date: {{item["due_date"]}} &nbsp; {{item["tags"]}} &nbsp; Time Added: {{item["time"]}} <input type="checkbox" name="done"> &nbsp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; {{item["tags"]}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+            {% endif %}
+        {% endfor %}
+        </ol> -->
+
+        <ol>
+        {% for item in to_do_list %}
+            {% if item["due_date"] == today %}
+                {% if item["priority"] == "High" %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Today</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: red">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% elif item["priority"] == "Medium" %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Today</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: orange">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% elif item["priority"] == "Low" %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Today</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: yellow">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% else %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Today</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; {{item["tags"]}} &emsp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% endif %}
+            {% elif item["due_date"] == tomorrow %}
+                {% if item["priority"] == "High" %}
+                    <li> <strong>{{item["content"]}}</strong> &ensp; <code>Tomorrow</code> &ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: red">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% elif item["priority"] == "Medium" %}
+                    <li> <strong>{{item["content"]}}</strong> &ensp; <code>Tomorrow</code> &ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: orange">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% elif item["priority"] == "Low" %}
+                    <li> <strong>{{item["content"]}}</strong> &ensp; <code>Tomorrow</code> &ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: yellow">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% else %}
+                    <li> <strong>{{item["content"]}}</strong> &ensp; <code>Tomorrow</code> &ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; {{item["tags"]}} &emsp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% endif %}
+            {% else %}
+                {% if item["priority"] == "High" %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Later</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: red">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% elif item["priority"] == "Medium" %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Later</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: orange">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% elif item["priority"] == "Low" %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Later</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; <code style = "background-color: yellow">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% else %}
+                    <li> <strong>{{item["content"]}}</strong> &emsp; <code>Later</code> &emsp;&ensp; Due Date: {{item["due_date"]}} &ensp; <i>Time Added: {{item["time"]}}</i> &ensp; {{item["tags"]}} &emsp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+                {% endif %}
             {% endif %}
         {% endfor %}
         </ol>

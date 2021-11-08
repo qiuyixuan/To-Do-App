@@ -5,9 +5,7 @@ Yixuan Qiu & Luhang Sun
 """
 
 from flask import Flask, render_template, request, url_for, redirect
-
-# from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+import datetime
 
 app = Flask(__name__)
 
@@ -17,12 +15,18 @@ content_list = []
 
 @app.route("/")
 def index():
-    now = datetime.now()
-    date_time = now.strftime("%m/%d/%Y, %H:%M")
+    now = datetime.datetime.now()
+    today = datetime.date.today()
+    curr_time = now.strftime("%H:%M")
+    tomorrow = str(today + datetime.timedelta(days=1))
+    today = str(today)
+
     return render_template(
         "base.html",
         title="Home",
-        date_time=date_time,
+        today=today,
+        curr_time=curr_time,
+        tomorrow=tomorrow,
         to_do_list=to_do_list,
         content_list=content_list,
     )
@@ -40,15 +44,15 @@ def add():
     tags_input = request.form.get("tags")
     due_date = request.form.get("due_date")
 
-    now = datetime.now()
-    time = now.strftime("%m/%d/%Y, %H:%M")
+    now = datetime.datetime.now()
+    added_time = now.strftime("%Y-%m-%d, %H:%M")
 
     # create item dictionary with info above
     item = {}
     item["content"] = content
     item["priority"] = priority
     item["tags"] = format_tags(tags_input)
-    item["time"] = time
+    item["time"] = added_time
     item["due_date"] = due_date
     item["id"] = content + str(content_list.count(content))
 
