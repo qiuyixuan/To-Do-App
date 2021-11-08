@@ -7,3 +7,5 @@
 We used the [Black](https://github.com/psf/black) formatter to reformat [app.py](src/app.py) and [test_app.py](src/test_app.py).
 
 #### 2. Add a calendar to our app, where each to-do item has a due date.
+Users can select a due date in a drop-down calender.  
+The app will compare the due date with today's and tomorrow's dates and generate a code `Today`, `Tomorrow`, or `Later` for each to-do item.
