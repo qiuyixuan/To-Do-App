@@ -11,7 +11,8 @@ from app import *
 import requests
 
 
-website_path = "https://glacial-plains-37331.herokuapp.com/"
+# website_path = "https://glacial-plains-37331.herokuapp.com/"
+website_path = "https://intense-forest-11844.herokuapp.com/"
 # website_path = "http://127.0.0.1:5000/"
 
 
