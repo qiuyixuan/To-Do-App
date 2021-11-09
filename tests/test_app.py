@@ -4,14 +4,16 @@ Project 3
 Yixuan Qiu & Luhang Sun
 """
 
-import sys
-sys.path.append('../src/')
+# import sys
+
+# sys.path.append("../src/")
 from app import *
 import requests
 
 
 website_path = "https://glacial-plains-37331.herokuapp.com/"
 # website_path = "http://127.0.0.1:5000/"
+
 
 def test_index():
     client = app.test_client()
