@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html>
+    <head>
+        <title>{{ title }} - Todo App</title>
+    </head>
+
+    <center>
+        <body>
+            <h1>A Minimalist To-Do App</h1>
+
+            <br>
+
+            <form action="/" method="POST">
+                <input type="text" name="content" placeholder="To Do Item" id="content">
+                <input type="submit" value="Add">
+            </form>
+
+            <br>
+
+            <table>
+                {% for item in items %}
+                <tr>
+                    <td>
+                        {{ item.content }}&emsp;
+                    </td>
+                    <td>
+                        <input type="checkbox" name="done">&emsp;
+                    </td>
+                    <td>
+                        <a href="remove/{{item.id}}">Remove</a><br>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </body>
+    </center>
+
+    </html>

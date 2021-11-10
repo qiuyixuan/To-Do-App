@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <h1 style="text-align:center">A Minimalist To-Do App</h1>
+        <h1 style="text-align:center">To-Do App</h1>
 
         <br>
 
@@ -14,7 +14,7 @@
 
         <hr>
 
-        <form action="/add" method="post">
+        <form action="/add" method="POST">
         	<div style="text-align:center">
         		<label for="title">📝 To-Do Item</label>
         		<input type="text" name="item" placeholder="To Do Item" required=True>
@@ -81,6 +81,7 @@
             {% endif %}
         {% endfor %}
         </ol> -->
+
 
         <ol>
         {% for item in to_do_list %}
