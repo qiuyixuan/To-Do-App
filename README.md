@@ -4,7 +4,7 @@
 
 Test Coverage: 94%  
 
-Website Links: https://glacial-plains-37331.herokuapp.com  
+Heroku App Link: https://glacial-plains-37331.herokuapp.com  
 
 
 ### Extensions:
