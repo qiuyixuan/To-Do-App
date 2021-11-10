@@ -4,12 +4,15 @@ Project 3
 Yixuan Qiu & Luhang Sun
 """
 
+import sys
+
+sys.path.append("../src/")
+
 from app import *
 import requests
 
 
 website_path = "https://glacial-plains-37331.herokuapp.com/"
-# website_path = "https://intense-forest-11844.herokuapp.com/"
 # website_path = "http://127.0.0.1:5000/"
 
 
@@ -19,7 +22,7 @@ def test_index():
     assert response.status_code == 200  # success
 
     webpage_text = response.get_data()
-    assert b"A Minimalist To-Do App" in response.data
+    assert b"To-Do App" in response.data
     assert b"Current Date and Time is" in response.data
     assert b"To-Do Item" in response.data
     assert b"Due Date" in response.data
