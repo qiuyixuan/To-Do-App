@@ -6,6 +6,8 @@ Yixuan Qiu & Luhang Sun
 
 from flask import Flask, render_template, request, url_for, redirect
 import datetime
+import connect_gsheets
+import webbrowser
 
 app = Flask(__name__)
 
@@ -108,6 +110,15 @@ def tag_filtering():
         elif request.form.get("reset_result"):
             return index()
 
+@app.route("/output", methods=["POST"])
+def output_gsheet():
+    '''output the current to-do list to a google spreadsheet'''
+    if request.form.get("output"):
+        connect_gsheets.to_gsheet(to_do_list)
+    webbrowser.open_new_tab("https://docs.google.com/spreadsheets/d/1PEZ_XA8XoC_92BaijnWm9h3D9H81SgFV_7DnBdwsAJ4/edit#gid=0")
+    
+    return redirect(url_for("index"))
+
 
 def format_tags(tags_input):
     '''join tag list to a string for display'''
@@ -122,9 +133,6 @@ def format_tags(tags_input):
                 all_tag_list.append(tag) 
         tags = "#" + " #".join(tag_list)
     return tags
-
-
-
 
 
 if __name__ == "__main__":
