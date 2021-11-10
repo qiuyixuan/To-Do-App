@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 to_do_list = []
 content_list = []
+all_tag_list = [] # list for all the tags
 
 
 @app.route("/")
@@ -70,13 +71,30 @@ def remove(item_id):
             break
     return redirect(url_for("index"))
 
+@app.route("tagsfilter/")
+def tag_filtering(tags_list):
+    '''a search filter for tags that allows multi-entry searches'''
+    tag_filter_helper(tags_list)
+    return redirect(url_for("index"))
 
-# join tag list to a string for display
+def tag_filter_helper(tags_list):
+    '''helper function of tag filtering algorithm'''
+    filter_results = [] # the list of filtered item dicts
+    for item in to_do_list:
+        this_item_tags = item["tags"] # this a string sperated with '#'
+        for tag in tags_list:
+            if tag in this_item_tags:
+                filter_results.append(item)
+                break # continue to the next item on to-do list if one of the current item's tags match any of the indexed tags
+    return filter_results
+
 def format_tags(tags_input):
+    '''join tag list to a string for display'''
     if tags_input is None or tags_input == "":
         tags = ""
     else:
         tag_list = tags_input.split(" ,")
+        all_tag_list.extend(tag_list) # add to a cumulative tags list
         tags = "# " + " #".join(tag_list)
     return tags
 
