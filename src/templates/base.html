@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <h1 style="text-align:center">A Minimalist To-Do App</h1>
+        <h1 style="text-align:center">To-Do App</h1>
 
         <br>
 
@@ -14,7 +14,7 @@
 
         <hr>
 
-        <form action="/add" method="post">
+        <form action="/add" method="POST">
         	<div style="text-align:center">
         		<label for="title">📝 To-Do Item</label>
         		<input type="text" name="item" placeholder="To Do Item" required=True>
@@ -40,27 +40,6 @@
         </form>
 
         <br>
-
-        <!-- <div id="btnContainer" style="text-align:center">
-            <button class="btn active" onclick="filter_date('all')"> All</button>
-            <button class="btn" onclick="filter_date('today')"> Today</button>
-            <button class="btn" onclick="filter_date('tomorrow')"> Tomorrow</button>
-            <button class="btn" onclick="filter_date('later')"> Later</button>
-        </div> -->
-
-        <!-- <ol>
-        {% for item in to_do_list %}
-            {% if item["priority"] == "High" %}
-                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: red">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
-            {% elif item["priority"] == "Medium" %}
-                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: orange">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
-            {% elif item["priority"] == "Low" %}
-                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: yellow">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
-            {% else %}
-                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; {{item["tags"]}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
-            {% endif %}
-        {% endfor %}
-        </ol> -->
 
         <ol>
         {% for item in to_do_list %}
