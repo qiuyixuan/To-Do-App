@@ -6,6 +6,8 @@ Yixuan Qiu & Luhang Sun
 
 from flask import Flask, render_template, request, url_for, redirect
 import datetime
+import connect_gsheets
+import webbrowser
 
 app = Flask(__name__)
 
@@ -61,6 +63,8 @@ def add():
     content_list.append(content)
     to_do_list.append(item)
 
+    print(to_do_list)
+
     return redirect(url_for("index"))
 
 
@@ -81,6 +85,7 @@ def tag_filtering():
         if request.form.get("submit_search"):
             tag_idx = request.form.get("tag_filter")
             filter_results = [] # the list of filtered item dicts
+            
             for item in to_do_list:
                 this_item_tags = item["tags"] # this a string sperated with '#'
                 if tag_idx in this_item_tags:
@@ -104,6 +109,15 @@ def tag_filtering():
             )
         elif request.form.get("reset_result"):
             return index()
+
+@app.route("/output", methods=["POST"])
+def output_gsheet():
+    '''output the current to-do list to a google spreadsheet'''
+    if request.form.get("output"):
+        connect_gsheets.to_gsheet(to_do_list)
+    webbrowser.open_new_tab("https://docs.google.com/spreadsheets/d/1PEZ_XA8XoC_92BaijnWm9h3D9H81SgFV_7DnBdwsAJ4/edit#gid=0")
+    
+    return redirect(url_for("index"))
 
 
 def format_tags(tags_input):
