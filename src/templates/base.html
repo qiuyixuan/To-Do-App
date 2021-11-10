@@ -36,10 +36,26 @@
 
         		<button type="submit">Add</button>
 
+                <br>
+                <br>
+
+                <!-- dropdown list naive implementation -->
+
+                <label for="tag_filter">Filter by: Tags</label>
+                <select id="tag_filter" name="tag_filter">
+                    <option value="blank"></option>
+                    {% for tag in all_tag_list %}
+                        <option value={{tag}}>{{tag}}</option>
+                    {% endfor %}
+                </select>
+
+
         	</div>
         </form>
 
+
         <br>
+
 
         <!-- <div id="btnContainer" style="text-align:center">
             <button class="btn active" onclick="filter_date('all')"> All</button>
@@ -97,18 +113,6 @@
             {% endif %}
         {% endfor %}
         </ol>
-
-
-        <!-- dropdown list naive implementation -->
-        <div style="text-align: left">
-            <label for = "tag_filter">&nbsp;&nbsp;Filter by: Tags</label>
-            <select multiple name="tag_filter" id="tag_filter">
-                <option value="blank"></option>
-                {% for tag in all_tag_list %}
-                    <option value = {{tag}}> aa </option>
-                {% endfor %}
-            </select>
-        </div>
 
         <hr>
 

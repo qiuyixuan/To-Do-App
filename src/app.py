@@ -60,6 +60,7 @@ def add():
     content_list.append(content)
     to_do_list.append(item)
 
+    print(all_tag_list)
     return redirect(url_for("index"))
 
 
@@ -93,7 +94,7 @@ def format_tags(tags_input):
     if tags_input is None or tags_input == "":
         tags = ""
     else:
-        tag_list = tags_input.split(" ,")
+        tag_list = tags_input.split(", ")
         all_tag_list.extend(tag_list) # add to a cumulative tags list
         tags = "# " + " #".join(tag_list)
     return tags
