@@ -4,7 +4,7 @@ import pandas as pd
 #authorization
 gc = pygsheets.authorize(service_file='./cs321-proj3-27cd9b62ae97.json')
 
-sample_list = [{'content': 'hHHHw', 'priority': 'High', 'tags': '#family #research', 'time': '2021-11-10, 00:38', 'due_date': '2021-11-03', 'id': 'hw0'}, {'content': 'sad', 'priority': 'Medium', 'tags': '#sda', 'time': '2021-11-10, 00:39', 'due_date': '2021-11-11', 'id': 'sad0'}]
+# sample_list = [{'content': 'hHHHw', 'priority': 'High', 'tags': '#family #research', 'time': '2021-11-10, 00:38', 'due_date': '2021-11-03', 'id': 'hw0'}, {'content': 'sad', 'priority': 'Medium', 'tags': '#sda', 'time': '2021-11-10, 00:39', 'due_date': '2021-11-11', 'id': 'sad0'}]
 
 def todolist_to_pd(to_do_list):
     '''takes in the to-do list dictionary from the main app file 
