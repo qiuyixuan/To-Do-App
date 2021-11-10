@@ -39,7 +39,49 @@
         	</div>
         </form>
 
+
+        <!-- dropdown list naive implementation -->
+        <form action="/tagfilter" method="post">
+            <div style="text-align:center">
+                <label for="tag_filter">Filter by: Tags</label>
+                <select id="tag_filter" name="tag_filter">
+                    <option value="blank"></option>
+                    {% for tag in all_tag_list %}
+                        <option value={{tag}}>{{tag}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" name="submit_search" value="submit_search">Search</button>
+                <button type="submit" name="reset_result" value="reset_result">Reset</button>
+                
+
+            </div>
+        </form>
+
+
         <br>
+
+
+        <!-- <div id="btnContainer" style="text-align:center">
+            <button class="btn active" onclick="filter_date('all')"> All</button>
+            <button class="btn" onclick="filter_date('today')"> Today</button>
+            <button class="btn" onclick="filter_date('tomorrow')"> Tomorrow</button>
+            <button class="btn" onclick="filter_date('later')"> Later</button>
+        </div> -->
+
+        <!-- <ol>
+        {% for item in to_do_list %}
+            {% if item["priority"] == "High" %}
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: red">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+            {% elif item["priority"] == "Medium" %}
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: orange">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+            {% elif item["priority"] == "Low" %}
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; <code style = "background-color: yellow">{{item["priority"]}}</code> &ensp; {{item["tags"]}} &ensp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+            {% else %}
+                <li> {{item["content"]}} &ensp; Due Date: {{item["due_date"]}} &ensp; Time Added: {{item["time"]}} &ensp; {{item["tags"]}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="checkbox" name="done"> &ensp; <a href="/remove/{{item["id"]}}">remove</a> </li>
+            {% endif %}
+        {% endfor %}
+        </ol> -->
+
 
         <ol>
         {% for item in to_do_list %}
