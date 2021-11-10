@@ -22,3 +22,6 @@ We used Flask-SQLAlchemy to implement an [app](src/app_db.py) and here is the as
 
 #### 4. Add a tag filtering feature
 Users can filter to-do items they added to each to-do item using the drop down tag filter, which for now allows single entry tag searches and a reset function that reverts the form back to the full list of to-do-list.
+
+#### 5. Connect to Google Drive API to export the to-do list
+Users can click on the button at the bottom of the page to export their to-do list to a pre-set google spreadsheet, which will be opened in a new browser window on click. *For this feature to run locally, it requires a credential json file that Google warned me not to share, so I did not include it in the repo.*
