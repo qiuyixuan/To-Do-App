@@ -61,6 +61,8 @@ def add():
     content_list.append(content)
     to_do_list.append(item)
 
+    print(to_do_list)
+
     return redirect(url_for("index"))
 
 
@@ -81,6 +83,7 @@ def tag_filtering():
         if request.form.get("submit_search"):
             tag_idx = request.form.get("tag_filter")
             filter_results = [] # the list of filtered item dicts
+            
             for item in to_do_list:
                 this_item_tags = item["tags"] # this a string sperated with '#'
                 if tag_idx in this_item_tags:
@@ -119,6 +122,9 @@ def format_tags(tags_input):
                 all_tag_list.append(tag) 
         tags = "#" + " #".join(tag_list)
     return tags
+
+
+
 
 
 if __name__ == "__main__":
