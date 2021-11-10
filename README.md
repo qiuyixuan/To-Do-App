@@ -6,7 +6,7 @@ Test Coverage: 94%
 
 Heroku App Link: https://glacial-plains-37331.herokuapp.com  
 
-The app worked well locally, but it might need some refreshing after a button is clicked on the Heroku app.
+The app worked well locally, but the page on the Heroku app might need to be refreshed several times after a button is clicked.
 
 
 ### Extensions:
