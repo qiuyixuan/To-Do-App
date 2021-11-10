@@ -98,6 +98,18 @@
         {% endfor %}
         </ol>
 
+
+        <!-- dropdown list naive implementation -->
+        <div style="text-align: left">
+            <label for = "tag_filter">&nbsp;&nbsp;Filter by: Tags</label>
+            <select multiple name="tag_filter" id="tag_filter">
+                <option value="blank"></option>
+                {% for tag in all_tag_list %}
+                    <option value = {{tag}}> aa </option>
+                {% endfor %}
+            </select>
+        </div>
+
         <hr>
 
         <footer class="footer" style="text-align:center">

@@ -71,7 +71,7 @@ def remove(item_id):
             break
     return redirect(url_for("index"))
 
-@app.route("tagsfilter/")
+# @app.route("tagsfilter/")
 def tag_filtering(tags_list):
     '''a search filter for tags that allows multi-entry searches'''
     tag_filter_helper(tags_list)
