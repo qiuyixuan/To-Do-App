@@ -61,7 +61,6 @@ def add():
     content_list.append(content)
     to_do_list.append(item)
 
-    # print(all_tag_list)
     return redirect(url_for("index"))
 
 
@@ -73,32 +72,39 @@ def remove(item_id):
             break
     return redirect(url_for("index"))
 
+
 @app.route("/tagfilter", methods=["POST", "GET"])
 def tag_filtering():
     '''a search filter for tags that allows single entry searches (for now)'''
-    tag_idx = request.form.get("tag_filter")
-    filter_results = [] # the list of filtered item dicts
-    for item in to_do_list:
-        this_item_tags = item["tags"] # this a string sperated with '#'
-        if tag_idx in this_item_tags:
-            filter_results.append(item)
-    
-    now = datetime.datetime.now()
-    today = datetime.date.today()
-    curr_time = now.strftime("%H:%M")
-    tomorrow = str(today + datetime.timedelta(days=1))
-    today = str(today)
+    index() # reset the rendering before new searches
+    if request.method == "POST":
+        if request.form.get("submit_search"):
+            tag_idx = request.form.get("tag_filter")
+            filter_results = [] # the list of filtered item dicts
+            for item in to_do_list:
+                this_item_tags = item["tags"] # this a string sperated with '#'
+                if tag_idx in this_item_tags:
+                    filter_results.append(item)
+            
+            now = datetime.datetime.now()
+            today = datetime.date.today()
+            curr_time = now.strftime("%H:%M")
+            tomorrow = str(today + datetime.timedelta(days=1))
+            today = str(today)
 
-    return render_template(
-        "base.html",
-        title="Home",
-        today=today,
-        curr_time=curr_time,
-        tomorrow=tomorrow,
-        to_do_list=filter_results,
-        content_list=content_list,
-        all_tag_list=all_tag_list
-    )
+            return render_template(
+                "base.html",
+                title="Home",
+                today=today,
+                curr_time=curr_time,
+                tomorrow=tomorrow,
+                to_do_list=filter_results,
+                content_list=content_list,
+                all_tag_list=all_tag_list
+            )
+        elif request.form.get("reset_result"):
+            return index()
+
 
 def format_tags(tags_input):
     '''join tag list to a string for display'''
