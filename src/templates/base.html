@@ -36,11 +36,13 @@
 
         		<button type="submit">Add</button>
 
-                <br>
-                <br>
+        	</div>
+        </form>
 
-                <!-- dropdown list naive implementation -->
 
+        <!-- dropdown list naive implementation -->
+        <form action="/tagfilter" method="post">
+            <div style="text-align:left">
                 <label for="tag_filter">Filter by: Tags</label>
                 <select id="tag_filter" name="tag_filter">
                     <option value="blank"></option>
@@ -49,8 +51,9 @@
                     {% endfor %}
                 </select>
 
+                <button type="submit">Search</button>
 
-        	</div>
+            </div>
         </form>
 
 

@@ -73,22 +73,17 @@ def remove(item_id):
             break
     return redirect(url_for("index"))
 
-# @app.route("tagsfilter/")
-def tag_filtering(tags_list):
-    '''a search filter for tags that allows multi-entry searches'''
-    tag_filter_helper(tags_list)
-    return redirect(url_for("index"))
-
-def tag_filter_helper(tags_list):
-    '''helper function of tag filtering algorithm'''
+@app.route("/tagsfilter/<string:tag_idx>", methods=["POST"])
+def tag_filtering(tag_idx):
+    '''a search filter for tags that allows single entry searches (for now)'''
     filter_results = [] # the list of filtered item dicts
     for item in to_do_list:
         this_item_tags = item["tags"] # this a string sperated with '#'
-        for tag in tags_list:
-            if tag in this_item_tags:
-                filter_results.append(item)
-                break # continue to the next item on to-do list if one of the current item's tags match any of the indexed tags
-    return filter_results
+        if tag_idx in this_item_tags:
+            filter_results.append(item)
+    
+    # return filter_results
+    return redirect(url_for("index"))
 
 def format_tags(tags_input):
     '''join tag list to a string for display'''
