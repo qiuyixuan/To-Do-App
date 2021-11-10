@@ -19,3 +19,6 @@ The app will compare the due date with today's and tomorrow's dates and generate
 
 #### 3. Use a database along with Flask
 We used Flask-SQLAlchemy to implement an [app](src/app_db.py) and here is the asscoiated [html file](src/templates/index.html).
+
+#### 4. Implement a tag filter
+The filter is able to search by tag and reset itself.
