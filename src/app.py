@@ -115,7 +115,7 @@ def output_gsheet():
     '''output the current to-do list to a google spreadsheet'''
     if request.form.get("output"):
         connect_gsheets.to_gsheet(to_do_list)
-    webbrowser.open_new_tab("https://docs.google.com/spreadsheets/d/1PEZ_XA8XoC_92BaijnWm9h3D9H81SgFV_7DnBdwsAJ4/edit#gid=0")
+    webbrowser.open_new_tab("https://docs.google.com/spreadsheets/d/1sXwPx9zsE6wp5PxmAap0CvTVXtFcjmqT1jXP2PpUD0k/edit?usp=sharing")
     
     return redirect(url_for("index"))
 
